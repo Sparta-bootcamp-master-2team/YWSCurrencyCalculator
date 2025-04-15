@@ -1,0 +1,26 @@
+name: 🧹 리팩토링 요청 (Refactor)
+description: 코드 개선이 필요한 경우 사용하세요.
+title: "refactor "
+labels: ["refactor"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🧹 Refactor Issue  
+        개선하려는 코드나 컴포넌트를 명확히 작성해주세요.
+
+  - type: textarea
+    id: refactor_target
+    attributes:
+      label: 리팩토링 대상
+      placeholder: 어떤 파일이나 함수인지 구체적으로
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: 리팩토링 이유
+      placeholder: 리팩토링이 필요한 이유
+    validations:
+      required: true

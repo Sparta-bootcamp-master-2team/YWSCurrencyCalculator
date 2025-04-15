@@ -1,0 +1,582 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		E8AD153C2DAE28F100CC9CC7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8AD151D2DAE28ED00CC9CC7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E8AD15242DAE28ED00CC9CC7;
+			remoteInfo = YWSCurrencyCalculator;
+		};
+		E8AD15462DAE28F100CC9CC7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8AD151D2DAE28ED00CC9CC7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E8AD15242DAE28ED00CC9CC7;
+			remoteInfo = YWSCurrencyCalculator;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E8AD15252DAE28ED00CC9CC7 /* YWSCurrencyCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YWSCurrencyCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8AD153B2DAE28F100CC9CC7 /* YWSCurrencyCalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YWSCurrencyCalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8AD15452DAE28F100CC9CC7 /* YWSCurrencyCalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YWSCurrencyCalculatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E8AD154D2DAE28F100CC9CC7 /* Exceptions for "YWSCurrencyCalculator" folder in "YWSCurrencyCalculator" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = E8AD15242DAE28ED00CC9CC7 /* YWSCurrencyCalculator */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		E8AD15272DAE28ED00CC9CC7 /* YWSCurrencyCalculator */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E8AD154D2DAE28F100CC9CC7 /* Exceptions for "YWSCurrencyCalculator" folder in "YWSCurrencyCalculator" target */,
+			);
+			path = YWSCurrencyCalculator;
+			sourceTree = "<group>";
+		};
+		E8AD153E2DAE28F100CC9CC7 /* YWSCurrencyCalculatorTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = YWSCurrencyCalculatorTests;
+			sourceTree = "<group>";
+		};
+		E8AD15482DAE28F100CC9CC7 /* YWSCurrencyCalculatorUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = YWSCurrencyCalculatorUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E8AD15222DAE28ED00CC9CC7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8AD15382DAE28F100CC9CC7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8AD15422DAE28F100CC9CC7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E8AD151C2DAE28ED00CC9CC7 = {
+			isa = PBXGroup;
+			children = (
+				E8AD15272DAE28ED00CC9CC7 /* YWSCurrencyCalculator */,
+				E8AD153E2DAE28F100CC9CC7 /* YWSCurrencyCalculatorTests */,
+				E8AD15482DAE28F100CC9CC7 /* YWSCurrencyCalculatorUITests */,
+				E8AD15262DAE28ED00CC9CC7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E8AD15262DAE28ED00CC9CC7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E8AD15252DAE28ED00CC9CC7 /* YWSCurrencyCalculator.app */,
+				E8AD153B2DAE28F100CC9CC7 /* YWSCurrencyCalculatorTests.xctest */,
+				E8AD15452DAE28F100CC9CC7 /* YWSCurrencyCalculatorUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E8AD15242DAE28ED00CC9CC7 /* YWSCurrencyCalculator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8AD154E2DAE28F100CC9CC7 /* Build configuration list for PBXNativeTarget "YWSCurrencyCalculator" */;
+			buildPhases = (
+				E8AD15212DAE28ED00CC9CC7 /* Sources */,
+				E8AD15222DAE28ED00CC9CC7 /* Frameworks */,
+				E8AD15232DAE28ED00CC9CC7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E8AD15272DAE28ED00CC9CC7 /* YWSCurrencyCalculator */,
+			);
+			name = YWSCurrencyCalculator;
+			packageProductDependencies = (
+			);
+			productName = YWSCurrencyCalculator;
+			productReference = E8AD15252DAE28ED00CC9CC7 /* YWSCurrencyCalculator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E8AD153A2DAE28F100CC9CC7 /* YWSCurrencyCalculatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8AD15532DAE28F100CC9CC7 /* Build configuration list for PBXNativeTarget "YWSCurrencyCalculatorTests" */;
+			buildPhases = (
+				E8AD15372DAE28F100CC9CC7 /* Sources */,
+				E8AD15382DAE28F100CC9CC7 /* Frameworks */,
+				E8AD15392DAE28F100CC9CC7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E8AD153D2DAE28F100CC9CC7 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E8AD153E2DAE28F100CC9CC7 /* YWSCurrencyCalculatorTests */,
+			);
+			name = YWSCurrencyCalculatorTests;
+			packageProductDependencies = (
+			);
+			productName = YWSCurrencyCalculatorTests;
+			productReference = E8AD153B2DAE28F100CC9CC7 /* YWSCurrencyCalculatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E8AD15442DAE28F100CC9CC7 /* YWSCurrencyCalculatorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8AD15562DAE28F100CC9CC7 /* Build configuration list for PBXNativeTarget "YWSCurrencyCalculatorUITests" */;
+			buildPhases = (
+				E8AD15412DAE28F100CC9CC7 /* Sources */,
+				E8AD15422DAE28F100CC9CC7 /* Frameworks */,
+				E8AD15432DAE28F100CC9CC7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E8AD15472DAE28F100CC9CC7 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E8AD15482DAE28F100CC9CC7 /* YWSCurrencyCalculatorUITests */,
+			);
+			name = YWSCurrencyCalculatorUITests;
+			packageProductDependencies = (
+			);
+			productName = YWSCurrencyCalculatorUITests;
+			productReference = E8AD15452DAE28F100CC9CC7 /* YWSCurrencyCalculatorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E8AD151D2DAE28ED00CC9CC7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					E8AD15242DAE28ED00CC9CC7 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					E8AD153A2DAE28F100CC9CC7 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = E8AD15242DAE28ED00CC9CC7;
+					};
+					E8AD15442DAE28F100CC9CC7 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = E8AD15242DAE28ED00CC9CC7;
+					};
+				};
+			};
+			buildConfigurationList = E8AD15202DAE28ED00CC9CC7 /* Build configuration list for PBXProject "YWSCurrencyCalculator" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E8AD151C2DAE28ED00CC9CC7;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = E8AD15262DAE28ED00CC9CC7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E8AD15242DAE28ED00CC9CC7 /* YWSCurrencyCalculator */,
+				E8AD153A2DAE28F100CC9CC7 /* YWSCurrencyCalculatorTests */,
+				E8AD15442DAE28F100CC9CC7 /* YWSCurrencyCalculatorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E8AD15232DAE28ED00CC9CC7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8AD15392DAE28F100CC9CC7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8AD15432DAE28F100CC9CC7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E8AD15212DAE28ED00CC9CC7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8AD15372DAE28F100CC9CC7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8AD15412DAE28F100CC9CC7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E8AD153D2DAE28F100CC9CC7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E8AD15242DAE28ED00CC9CC7 /* YWSCurrencyCalculator */;
+			targetProxy = E8AD153C2DAE28F100CC9CC7 /* PBXContainerItemProxy */;
+		};
+		E8AD15472DAE28F100CC9CC7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E8AD15242DAE28ED00CC9CC7 /* YWSCurrencyCalculator */;
+			targetProxy = E8AD15462DAE28F100CC9CC7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		E8AD154F2DAE28F100CC9CC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 52YSN62MCL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = YWSCurrencyCalculator/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-GGDol.YWSCurrencyCalculator";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		E8AD15502DAE28F100CC9CC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 52YSN62MCL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = YWSCurrencyCalculator/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-GGDol.YWSCurrencyCalculator";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		E8AD15512DAE28F100CC9CC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E8AD15522DAE28F100CC9CC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E8AD15542DAE28F100CC9CC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 52YSN62MCL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-GGDol.YWSCurrencyCalculatorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YWSCurrencyCalculator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/YWSCurrencyCalculator";
+			};
+			name = Debug;
+		};
+		E8AD15552DAE28F100CC9CC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 52YSN62MCL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-GGDol.YWSCurrencyCalculatorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YWSCurrencyCalculator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/YWSCurrencyCalculator";
+			};
+			name = Release;
+		};
+		E8AD15572DAE28F100CC9CC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 52YSN62MCL;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-GGDol.YWSCurrencyCalculatorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = YWSCurrencyCalculator;
+			};
+			name = Debug;
+		};
+		E8AD15582DAE28F100CC9CC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 52YSN62MCL;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-GGDol.YWSCurrencyCalculatorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = YWSCurrencyCalculator;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E8AD15202DAE28ED00CC9CC7 /* Build configuration list for PBXProject "YWSCurrencyCalculator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8AD15512DAE28F100CC9CC7 /* Debug */,
+				E8AD15522DAE28F100CC9CC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8AD154E2DAE28F100CC9CC7 /* Build configuration list for PBXNativeTarget "YWSCurrencyCalculator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8AD154F2DAE28F100CC9CC7 /* Debug */,
+				E8AD15502DAE28F100CC9CC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8AD15532DAE28F100CC9CC7 /* Build configuration list for PBXNativeTarget "YWSCurrencyCalculatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8AD15542DAE28F100CC9CC7 /* Debug */,
+				E8AD15552DAE28F100CC9CC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8AD15562DAE28F100CC9CC7 /* Build configuration list for PBXNativeTarget "YWSCurrencyCalculatorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8AD15572DAE28F100CC9CC7 /* Debug */,
+				E8AD15582DAE28F100CC9CC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E8AD151D2DAE28ED00CC9CC7 /* Project object */;
+}

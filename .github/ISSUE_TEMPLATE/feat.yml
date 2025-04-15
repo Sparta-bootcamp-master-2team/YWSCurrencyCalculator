@@ -1,0 +1,31 @@
+name: 💡 기능 추가 (Feature)
+description: 새로운 기능 요청을 위한 템플릿입니다.
+title: "feat "
+labels: ["feat"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 💡 Feature Issue  
+        관련 기능에 대해 설명해주세요. 왜 필요한지, 어떤 기능인지 간단히 정리해주세요.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 기능 설명
+      placeholder: 어떤 기능을 왜 추가하고 싶은지 작성해주세요.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: todo
+    attributes:
+      label: 🌿 To-do
+      description: 해야 할 작업을 체크리스트로 작성해주세요.
+      options:
+        - label: 기능 상세 기획
+        - label: UI 설계
+        - label: API 연동
+        - label: 로직 구현
+        - label: 테스트
+        - label: 코드 리뷰 & 리팩토링

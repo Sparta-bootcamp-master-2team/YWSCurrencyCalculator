@@ -1,0 +1,24 @@
+name: 📝 문서 관련 (Docs)
+description: 문서화 또는 주석 추가 요청입니다.
+title: "docs "
+labels: ["docs"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 📄 Docs Issue  
+        문서화가 필요한 부분을 명확히 작성해주세요.
+
+  - type: textarea
+    id: doc_target
+    attributes:
+      label: 문서화 대상
+      placeholder: 어떤 문서 또는 주석을 작성해야 하는지
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: 요청 이유
+      placeholder: 문서화가 왜 필요한지, 어떤 용도인지

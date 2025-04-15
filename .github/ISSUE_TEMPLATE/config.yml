@@ -1,0 +1,19 @@
+blank_issues_enabled: false
+contact_links: []
+
+issue_templates:
+  - name: 💡 기능 추가 (Feature)
+    description: 새로운 기능 요청
+    file: feat.yml
+
+  - name: 🐞 버그 리포트 (Bug)
+    description: 오류나 문제 제보
+    file: bug.yml
+
+  - name: 📝 문서 관련 (Docs)
+    description: 문서, 주석 요청
+    file: docs.yml
+
+  - name: 🧹 리팩토링 요청 (Refactor)
+    description: 코드 구조 개선 요청
+    file: refactor.yml

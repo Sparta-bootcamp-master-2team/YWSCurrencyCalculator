@@ -1,0 +1,38 @@
+name: 🐞 버그 리포트 (Bug)
+description: 발견한 문제나 오류를 제보합니다.
+title: "bug "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🐞 Bug Report  
+        어떤 문제가 발생했는지 간단히 설명해주세요.
+
+  - type: textarea
+    id: bug_description
+    attributes:
+      label: 문제 설명
+      placeholder: 어떤 문제가 있었는지, 어떤 현상인지 작성해주세요.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 🔁 재현 방법
+      description: 어떤 단계로 문제가 재현되는지 구체적으로 작성해주세요.
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: false
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: 💻 환경 정보
+      placeholder: macOS 14.3, Safari 17.1, iPhone 13 Pro 등
+    validations:
+      required: false
