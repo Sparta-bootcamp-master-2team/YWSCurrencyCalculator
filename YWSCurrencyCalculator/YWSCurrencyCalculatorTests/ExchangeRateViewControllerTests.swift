@@ -8,13 +8,13 @@
 import XCTest
 @testable import YWSCurrencyCalculator
 
-class CurrencyCalculatorViewControllerTests: XCTestCase {
+class ExchangeRateViewControllerTests: XCTestCase {
     
-    var viewController: CurrencyCalculatorViewController!
+    var viewController: ExchangeRateViewController!
 
     override func setUp() {
         super.setUp()
-        viewController = CurrencyCalculatorViewController()
+        viewController = ExchangeRateViewController()
         viewController.loadViewIfNeeded()
     }
 
@@ -24,7 +24,7 @@ class CurrencyCalculatorViewControllerTests: XCTestCase {
         let testData: [(String, Double)] = [("USD", 1.0), ("KRW", 1350.23)]
         viewController.setValue(testData, forKey: "exchangeRates")  // private 접근 회피용
 
-        let tableView = (viewController.view as? CurrencyCalculatorView)?.tableView
+        let tableView = (viewController.view as? ExchangeRateView)?.tableView
 
         // when
         let count = viewController.tableView(tableView!, numberOfRowsInSection: 0)

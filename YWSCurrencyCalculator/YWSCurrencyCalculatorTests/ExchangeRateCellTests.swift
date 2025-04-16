@@ -8,21 +8,23 @@
 import XCTest
 @testable import YWSCurrencyCalculator
 
-class CurrencyCellTests: XCTestCase {
+class ExchangeRateCellTests: XCTestCase {
 
     func test_configure_setsLabelsCorrectly() {
         // given
-        let cell = CurrencyCell(style: .default, reuseIdentifier: "CurrencyCell")
+        let cell = ExchangeRateCell(style: .default, reuseIdentifier: "ExchangeRateCell")
 
         // when
         cell.configure(currency: "JPY", rate: 151.2124)
 
         // then
-        // KVC 방식으로 private UILabel 접근
         let currencyLabel = cell.value(forKey: "currencyLabel") as? UILabel
+        let countryLabel = cell.value(forKey: "countryLabel") as? UILabel
         let rateLabel = cell.value(forKey: "rateLabel") as? UILabel
 
         XCTAssertEqual(currencyLabel?.text, "JPY")
+        XCTAssertEqual(countryLabel?.text, "일본") // CurrencyCountryMapper에서 반환된 국가명
         XCTAssertEqual(rateLabel?.text, "151.2124")
     }
 }
+
