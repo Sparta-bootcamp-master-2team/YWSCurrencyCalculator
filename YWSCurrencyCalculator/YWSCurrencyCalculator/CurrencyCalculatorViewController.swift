@@ -17,8 +17,32 @@ class CurrencyCalculatorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = currencyView
-
+        
+    }
+    
+    // 테이블뷰 설정
+    private func setupTableView() {
+        currencyView.tableView.dataSource = self
+        currencyView.tableView.delegate = self
     }
     
 }
+extension CurrencyCalculatorViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    // exchangeRates의 개수만큼 셀 생성
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return exchangeRates.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CurrencyCell", for: indexPath) as? CurrencyCell else {
+            return UITableViewCell()
+        }
+
+        let (currency, rate) = exchangeRates[indexPath.row]
+        cell.configure(currency: currency, rate: rate)
+        return cell
+    }
+}
+
 
