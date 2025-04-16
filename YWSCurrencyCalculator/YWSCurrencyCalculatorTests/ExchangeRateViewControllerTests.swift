@@ -18,11 +18,16 @@ class ExchangeRateViewControllerTests: XCTestCase {
         viewController.loadViewIfNeeded()
     }
 
-    // 셀 개수 확인
-    func test_numberOfRows_matchesExchangeRatesCount() {
+    override func tearDown() {
+        viewController = nil
+    }
+
+    /// filteredRates 기준으로 셀 개수 확인
+    func test_numberOfRows_matchesFilteredRatesCount() {
         // given
         let testData: [(String, Double)] = [("USD", 1.0), ("KRW", 1350.23)]
-        viewController.setValue(testData, forKey: "exchangeRates")  // private 접근 회피용
+        viewController.setValue(testData, forKey: "exchangeRates")
+        viewController.setValue(testData, forKey: "filteredRates")
 
         let tableView = (viewController.view as? ExchangeRateView)?.tableView
 
@@ -33,12 +38,9 @@ class ExchangeRateViewControllerTests: XCTestCase {
         XCTAssertEqual(count, testData.count)
     }
 
-    // Alert 표시 확인
+    /// Alert 정상 노출 테스트
     func test_showErrorAlert_presentsAlert() {
-        // given
-        viewController.loadViewIfNeeded()
-
-        // when (private func 강제 호출)
+        // when
         viewController.perform(Selector(("showErrorAlert")))
 
         // then
@@ -54,5 +56,37 @@ class ExchangeRateViewControllerTests: XCTestCase {
 
         wait(for: [expectation], timeout: 1.0)
     }
-}
 
+    /// 검색어 입력 시 필터링 되는지
+    func test_searchBar_filtersCurrencyByCodeOrCountry() {
+        let testData: [(String, Double)] = [("KRW", 1350.0), ("JPY", 151.2), ("USD", 1.0)]
+        viewController.setValue(testData, forKey: "exchangeRates")
+        viewController.setValue(testData, forKey: "filteredRates")
+
+        let searchBar = (viewController.view as? ExchangeRateView)?.searchBar
+
+        viewController.searchBar(searchBar!, textDidChange: "KR")
+
+        let filtered = viewController.value(forKey: "filteredRates") as? [(String, Double)]
+        XCTAssertEqual(filtered?.count, 1)
+        XCTAssertEqual(filtered?.first?.0, "KRW")
+    }
+
+    /// 검색 결과 없음일 때 셀 하나만 보여야 함
+    func test_searchBar_filtersEmptyResult() {
+        let testData: [(String, Double)] = [("KRW", 1350.0), ("JPY", 151.2), ("USD", 1.0)]
+        viewController.setValue(testData, forKey: "exchangeRates")
+        viewController.setValue(testData, forKey: "filteredRates")
+
+        let searchBar = (viewController.view as? ExchangeRateView)?.searchBar
+
+        viewController.searchBar(searchBar!, textDidChange: "없는값")
+
+        let filtered = viewController.value(forKey: "filteredRates") as? [(String, Double)]
+        XCTAssertEqual(filtered?.count, 0)
+
+        let tableView = (viewController.view as? ExchangeRateView)?.tableView
+        let count = viewController.tableView(tableView!, numberOfRowsInSection: 0)
+        XCTAssertEqual(count, 1) // "검색 결과 없음" 셀
+    }
+}

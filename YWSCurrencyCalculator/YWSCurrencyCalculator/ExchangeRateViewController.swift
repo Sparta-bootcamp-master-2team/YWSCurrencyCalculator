@@ -14,6 +14,8 @@ class ExchangeRateViewController: UIViewController {
     // API 결과로 받을 환율 데이터 (정렬 포함)
     private var exchangeRates: [(String, Double)] = []
     
+    private var filteredRates: [(String, Double)] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = exchangeRateView
@@ -27,6 +29,7 @@ class ExchangeRateViewController: UIViewController {
     private func setupTableView() {
         exchangeRateView.tableView.dataSource = self
         exchangeRateView.tableView.delegate = self
+        exchangeRateView.searchBar.delegate = self
     }
     
     // API 호출
@@ -37,7 +40,9 @@ class ExchangeRateViewController: UIViewController {
                 switch result {
                 case .success(let data):
                     self?.exchangeRates = data.rates.sorted { $0.key < $1.key } // 정렬 후 표기
+                    self?.filteredRates = self?.exchangeRates ?? []
                     self?.exchangeRateView.tableView.reloadData()
+                    
                 case .failure:
                     self?.showErrorAlert()
                 }
@@ -58,18 +63,43 @@ extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate
     
     // exchangeRates의 개수만큼 셀 생성
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return exchangeRates.count
+        return filteredRates.isEmpty ? 1 : filteredRates.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if filteredRates.isEmpty {
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "검색 결과 없음"
+            cell.textLabel?.textAlignment = .center
+            cell.textLabel?.textColor = .gray
+            cell.selectionStyle = .none
+            return cell
+        }
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ExchangeRateCell", for: indexPath) as? ExchangeRateCell else {
             return UITableViewCell()
         }
-
-        let (currency, rate) = exchangeRates[indexPath.row]
+        
+        let (currency, rate) = filteredRates[indexPath.row]
         cell.configure(currency: currency, rate: rate)
         return cell
     }
+    
 }
 
-
+extension ExchangeRateViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard !searchText.isEmpty else {
+            filteredRates = exchangeRates
+            exchangeRateView.tableView.reloadData()
+            return
+        }
+        
+        filteredRates = exchangeRates.filter { (code, _) in
+            let country = ExchangeRateMapper.countryName(for: code)
+            return code.lowercased().contains(searchText.lowercased()) ||
+            country.lowercased().contains(searchText.lowercased())
+        }
+        exchangeRateView.tableView.reloadData()
+    }
+}
