@@ -90,7 +90,7 @@ class ExchangeRateCell: UITableViewCell {
     // 외부에서 이 뷰에 접근하는 API 제공 (ex: updateLabel(with:))
     func configure(currency: String, rate: Double) {
         currencyLabel.text = currency
-        countryLabel.text = CurrencyCountryMapper.countryName(for: currency)
+        countryLabel.text = ExchangeRateMapper.countryName(for: currency)
         rateLabel.text = String(format: "%.4f", rate)
     }
     
