@@ -14,7 +14,7 @@ class ExchangeRateView: UIView {
     // 뷰에 들어갈 컴포넌트들을 정의하는 공간
     let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        searchBar.text = "통화 검색"
+        searchBar.placeholder = "통화 검색"
         searchBar.backgroundImage = UIImage()
         
         return searchBar
