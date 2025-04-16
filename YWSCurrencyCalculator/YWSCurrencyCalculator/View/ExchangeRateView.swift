@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class CurrencyCalculatorView: UIView {
+class ExchangeRateView: UIView {
     
     // MARK: - UI Components
     // 뷰에 들어갈 컴포넌트들을 정의하는 공간
@@ -24,7 +24,7 @@ class CurrencyCalculatorView: UIView {
         let tableView = UITableView()
         tableView.separatorStyle = .singleLine
         tableView.rowHeight = 60
-        tableView.register(CurrencyCell.self, forCellReuseIdentifier: "CurrencyCell")
+        tableView.register(ExchangeRateCell.self, forCellReuseIdentifier: "ExchangeRateCell")
         return tableView
     }()
     

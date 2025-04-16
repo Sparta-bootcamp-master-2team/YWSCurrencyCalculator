@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class CurrencyCell: UITableViewCell {
+class ExchangeRateCell: UITableViewCell {
     
     // MARK: - UI Components
     // 뷰에 들어갈 컴포넌트들을 정의하는 공간

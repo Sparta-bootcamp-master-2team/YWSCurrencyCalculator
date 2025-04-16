@@ -7,16 +7,16 @@
 
 import UIKit
 
-class CurrencyCalculatorViewController: UIViewController {
+class ExchangeRateViewController: UIViewController {
     
-    private let currencyView = CurrencyCalculatorView()
+    private let exchangeRateView = ExchangeRateView()
     
     // API 결과로 받을 환율 데이터 (정렬 포함)
     private var exchangeRates: [(String, Double)] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view = currencyView
+        self.view = exchangeRateView
         self.view.backgroundColor = .white
         
         setupTableView()
@@ -25,8 +25,8 @@ class CurrencyCalculatorViewController: UIViewController {
     
     // 테이블뷰 설정
     private func setupTableView() {
-        currencyView.tableView.dataSource = self
-        currencyView.tableView.delegate = self
+        exchangeRateView.tableView.dataSource = self
+        exchangeRateView.tableView.delegate = self
     }
     
     // API 호출
@@ -37,7 +37,7 @@ class CurrencyCalculatorViewController: UIViewController {
                 switch result {
                 case .success(let data):
                     self?.exchangeRates = data.rates.sorted { $0.key < $1.key } // 정렬 후 표기
-                    self?.currencyView.tableView.reloadData()
+                    self?.exchangeRateView.tableView.reloadData()
                 case .failure:
                     self?.showErrorAlert()
                 }
@@ -54,7 +54,7 @@ class CurrencyCalculatorViewController: UIViewController {
     
     
 }
-extension CurrencyCalculatorViewController: UITableViewDataSource, UITableViewDelegate {
+extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate {
     
     // exchangeRates의 개수만큼 셀 생성
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -62,7 +62,7 @@ extension CurrencyCalculatorViewController: UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CurrencyCell", for: indexPath) as? CurrencyCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ExchangeRateCell", for: indexPath) as? ExchangeRateCell else {
             return UITableViewCell()
         }
 
