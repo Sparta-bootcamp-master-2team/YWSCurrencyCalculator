@@ -40,7 +40,9 @@ class ExchangeRateViewController: UIViewController {
                 switch result {
                 case .success(let data):
                     self?.exchangeRates = data.rates.sorted { $0.key < $1.key } // 정렬 후 표기
+                    self?.filteredRates = self?.exchangeRates ?? []
                     self?.exchangeRateView.tableView.reloadData()
+                    
                 case .failure:
                     self?.showErrorAlert()
                 }
@@ -61,18 +63,28 @@ extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate
     
     // exchangeRates의 개수만큼 셀 생성
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return exchangeRates.count
+        return filteredRates.isEmpty ? 1 : filteredRates.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if filteredRates.isEmpty {
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "검색 결과 없음"
+            cell.textLabel?.textAlignment = .center
+            cell.textLabel?.textColor = .gray
+            cell.selectionStyle = .none
+            return cell
+        }
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ExchangeRateCell", for: indexPath) as? ExchangeRateCell else {
             return UITableViewCell()
         }
-
-        let (currency, rate) = exchangeRates[indexPath.row]
+        
+        let (currency, rate) = filteredRates[indexPath.row]
         cell.configure(currency: currency, rate: rate)
         return cell
     }
+    
 }
 
 extension ExchangeRateViewController: UISearchBarDelegate {
@@ -86,7 +98,7 @@ extension ExchangeRateViewController: UISearchBarDelegate {
         filteredRates = exchangeRates.filter { (code, _) in
             let country = ExchangeRateMapper.countryName(for: code)
             return code.lowercased().contains(searchText.lowercased()) ||
-                   country.lowercased().contains(searchText.lowercased())
+            country.lowercased().contains(searchText.lowercased())
         }
         exchangeRateView.tableView.reloadData()
     }
