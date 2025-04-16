@@ -26,6 +26,21 @@ class CurrencyCalculatorViewController: UIViewController {
         currencyView.tableView.delegate = self
     }
     
+    // API 호출
+    private func fetchData() {
+        let service = DataService()
+        service.fetchData { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    self?.exchangeRates = data.rates.sorted { $0.key < $1.key } // 정렬 후 표기
+                    self?.currencyView.tableView.reloadData()
+                case .failure:
+                }
+            }
+        }
+    }
+    
 }
 extension CurrencyCalculatorViewController: UITableViewDataSource, UITableViewDelegate {
     
