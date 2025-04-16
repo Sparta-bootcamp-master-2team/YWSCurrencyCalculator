@@ -12,6 +12,14 @@ class CurrencyCalculatorView: UIView {
     
     // MARK: - UI Components
     // 뷰에 들어갈 컴포넌트들을 정의하는 공간
+    let searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.text = "통화 검색"
+        searchBar.backgroundImage = UIImage()
+        
+        return searchBar
+    }()
+    
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .singleLine
@@ -36,11 +44,19 @@ class CurrencyCalculatorView: UIView {
     
     private func setUI() {
         /// 뷰 계층 구성 (addSubview)
+        addSubview(searchBar)
         addSubview(tableView)
         
         /// 오토레이아웃 설정 (SnapKit 등)
+        searchBar.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.leading.trailing.equalToSuperview()
+        }
+        
         tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(searchBar.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
     

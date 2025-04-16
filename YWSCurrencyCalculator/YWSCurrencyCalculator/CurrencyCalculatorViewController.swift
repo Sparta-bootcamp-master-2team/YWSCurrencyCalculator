@@ -17,6 +17,7 @@ class CurrencyCalculatorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = currencyView
+        self.view.backgroundColor = .white
         
         setupTableView()
         fetchData()
