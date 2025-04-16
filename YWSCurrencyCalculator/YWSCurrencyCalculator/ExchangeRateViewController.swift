@@ -14,6 +14,8 @@ class ExchangeRateViewController: UIViewController {
     // API 결과로 받을 환율 데이터 (정렬 포함)
     private var exchangeRates: [(String, Double)] = []
     
+    private var filteredRates: [(String, Double)] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = exchangeRateView
@@ -27,6 +29,7 @@ class ExchangeRateViewController: UIViewController {
     private func setupTableView() {
         exchangeRateView.tableView.dataSource = self
         exchangeRateView.tableView.delegate = self
+        exchangeRateView.searchBar.delegate = self
     }
     
     // API 호출
@@ -72,4 +75,19 @@ extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate
     }
 }
 
-
+extension ExchangeRateViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard !searchText.isEmpty else {
+            filteredRates = exchangeRates
+            exchangeRateView.tableView.reloadData()
+            return
+        }
+        
+        filteredRates = exchangeRates.filter { (code, _) in
+            let country = ExchangeRateMapper.countryName(for: code)
+            return code.lowercased().contains(searchText.lowercased()) ||
+                   country.lowercased().contains(searchText.lowercased())
+        }
+        exchangeRateView.tableView.reloadData()
+    }
+}
