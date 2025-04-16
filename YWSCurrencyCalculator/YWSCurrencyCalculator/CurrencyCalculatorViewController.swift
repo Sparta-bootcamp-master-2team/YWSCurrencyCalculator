@@ -18,6 +18,8 @@ class CurrencyCalculatorViewController: UIViewController {
         super.viewDidLoad()
         self.view = currencyView
         
+        setupTableView()
+        fetchData()
     }
     
     // 테이블뷰 설정
