@@ -8,7 +8,7 @@
 import Foundation
 
 /// 네트워크 통신 중 발생할 수 있는 에러를 정의한 열거형입니다.
-///  - Equatable: 두 값이 같은지 비교할 수 있도록 해주는 프로토콜 ( Test Code를 위해 채택 )
+/// - Note: `Equatable`은 테스트 코드에서 비교를 가능하게 하기 위해 채택됩니다.
 enum DataError: Error, Equatable {
     /// 로컬 파일을 찾을 수 없음
     case fileNotFound
@@ -23,11 +23,15 @@ enum DataError: Error, Equatable {
 }
 
 /// 실시간 환율 데이터를 가져오는 네트워크 서비스 클래스입니다.
+/// 외부 API로부터 데이터를 받아 `ExchangeRateData` 모델로 디코딩하며,
+/// 결과는 Result 타입의 클로저를 통해 전달됩니다.
 class DataService {
     
     /// 환율 API로부터 데이터를 비동기로 가져옵니다.
     ///
-    /// - Parameter completion: 결과를 반환하는 클로저입니다. `ExchangeRateData`를 성공적으로 받아오면 `.success(data)`로 반환되고, 실패 시 `.failure(error)`로 반환됩니다.
+    /// - Parameter completion: 결과를 반환하는 클로저입니다.
+    /// 성공 시 `.success(ExchangeRateData)`를 반환하며,
+    /// 실패 시 `.failure(DataError)` 또는 `Error`를 반환합니다.
     func fetchData(completion: @escaping (Result<ExchangeRateData, Error>) -> Void) {
         
         /// API의 기본 URL (USD 기준 환율)
@@ -41,7 +45,7 @@ class DataService {
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        // 네트워크 요청 수행
+        // 비동기 네트워크 요청
         URLSession.shared.dataTask(with: request) { data, response, error in
             let successRange = 200..<300
             
@@ -58,13 +62,13 @@ class DataService {
                 return
             }
             
-            // HTTP 상태 코드가 성공 범위(200~299)에 포함되는지 확인
+            // HTTP 상태 코드 확인
             guard successRange.contains(httpResponse.statusCode) else {
                 completion(.failure(DataError.badStatus(code: httpResponse.statusCode)))
                 return
             }
             
-            // JSON 파싱
+            // JSON 파싱 시도
             do {
                 let decoded = try JSONDecoder().decode(ExchangeRateData.self, from: data)
                 completion(.success(decoded))
@@ -74,4 +78,3 @@ class DataService {
         }.resume()
     }
 }
-
