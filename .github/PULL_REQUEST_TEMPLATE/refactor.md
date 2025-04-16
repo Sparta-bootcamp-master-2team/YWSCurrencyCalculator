@@ -1,31 +1,15 @@
-name: 🧹 리팩토링 PR
-description: 리팩토링 작업만 포함된 경우 사용하세요.
-title: "refactor: "
-labels: ["refactor"]
-body:
-  - type: textarea
-    id: summary
-    attributes:
-      label: ✏️ 목적
-      description: 어떤 이유로 리팩토링했는지 (가독성, 성능, 역할 분리 등)
-    validations:
-      required: true
-  - type: checkboxes
-    id: checklist
-    attributes:
-      label: 🧩 변경 사항
-      options:
-        - label: 변수명 정리
-        - label: 함수 분리
-        - label: 중복 제거
-        - label: 불필요한 코드 제거
-  - type: textarea
-    id: effect
-    attributes:
-      label: ✅ 기대 효과
-      description: 어떤 점이 좋아졌는지 (성능, 유지보수 등)
-  - type: textarea
-    id: notes
-    attributes:
-      label: 💬 기타
-      description: 리뷰어가 봐야 할 포인트
+# 🧹 리팩토링 PR
+
+## 📌 관련 이슈
+해당 리팩토링이 연결된 이슈가 있다면 적어주세요. 예:  
+- closes #789
+
+## 📌 변경 사항 및 이유
+가독성 개선, 성능 향상, 역할 분리 등의 리팩토링 목적과 주요 변경 내용을 작성해주세요.
+
+## 📌 PR Point
+중점적으로 리뷰받고 싶은 리팩토링 지점이 있다면 적어주세요.  
+(ex. 함수 추출 방식, 네이밍 구조 등)
+
+## 📌 참고 사항
+추가로 리뷰어에게 알려야 할 사항이 있다면 작성해주세요.
