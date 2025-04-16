@@ -8,15 +8,23 @@
 import UIKit
 import SnapKit
 
-class CurrencyCalculatorView: UIView {
+class ExchangeRateView: UIView {
     
     // MARK: - UI Components
     // 뷰에 들어갈 컴포넌트들을 정의하는 공간
+    let searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.text = "통화 검색"
+        searchBar.backgroundImage = UIImage()
+        
+        return searchBar
+    }()
+    
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .singleLine
-        tableView.rowHeight = 56
-        tableView.register(CurrencyCell.self, forCellReuseIdentifier: "CurrencyCell")
+        tableView.rowHeight = 60
+        tableView.register(ExchangeRateCell.self, forCellReuseIdentifier: "ExchangeRateCell")
         return tableView
     }()
     
@@ -36,11 +44,19 @@ class CurrencyCalculatorView: UIView {
     
     private func setUI() {
         /// 뷰 계층 구성 (addSubview)
+        addSubview(searchBar)
         addSubview(tableView)
         
         /// 오토레이아웃 설정 (SnapKit 등)
+        searchBar.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.leading.trailing.equalTo(safeAreaLayoutGuide)
+        }
+        
         tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(searchBar.snp.bottom)
+            make.leading.trailing.equalTo(safeAreaLayoutGuide)
+            make.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
     

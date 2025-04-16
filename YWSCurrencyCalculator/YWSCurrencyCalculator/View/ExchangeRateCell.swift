@@ -8,21 +8,36 @@
 import UIKit
 import SnapKit
 
-class CurrencyCell: UITableViewCell {
+class ExchangeRateCell: UITableViewCell {
     
     // MARK: - UI Components
     // 뷰에 들어갈 컴포넌트들을 정의하는 공간
+    private lazy var labelStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [currencyLabel, countryLabel])
+        stack.axis = .vertical
+        stack.spacing = 4
+        
+        return stack
+    }()
+    
     private let currencyLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 16, weight: .regular)
+        label.font = .systemFont(ofSize: 16, weight: .medium)
         label.textColor = .label
         
         return label
     }()
     
+    private let countryLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14)
+        label.textColor = .gray
+        
+        return label
+    }()
     private let rateLabel: UILabel = {
         let label = UILabel()
-        label.font = .monospacedDigitSystemFont(ofSize: 16, weight: .regular)
+        label.font = .systemFont(ofSize: 16)
         label.textAlignment = .right
         label.textColor = .label
         
@@ -35,10 +50,10 @@ class CurrencyCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
         
-        contentView.addSubview(currencyLabel)
+        contentView.addSubview(labelStackView)
         contentView.addSubview(rateLabel)
         
-        currencyLabel.snp.makeConstraints { make in
+        labelStackView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
             make.centerY.equalToSuperview()
         }
@@ -46,6 +61,8 @@ class CurrencyCell: UITableViewCell {
         rateLabel.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(16)
             make.centerY.equalToSuperview()
+            make.leading.equalTo(labelStackView.snp.trailing).offset(16)
+            make.width.equalTo(120)
         }
         
     }
@@ -73,6 +90,7 @@ class CurrencyCell: UITableViewCell {
     // 외부에서 이 뷰에 접근하는 API 제공 (ex: updateLabel(with:))
     func configure(currency: String, rate: Double) {
         currencyLabel.text = currency
+        countryLabel.text = ExchangeRateMapper.countryName(for: currency)
         rateLabel.text = String(format: "%.4f", rate)
     }
     
