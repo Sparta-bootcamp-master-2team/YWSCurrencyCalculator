@@ -15,7 +15,7 @@ class CurrencyCalculatorView: UIView {
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .singleLine
-        tableView.rowHeight = 56
+        tableView.rowHeight = 60
         tableView.register(CurrencyCell.self, forCellReuseIdentifier: "CurrencyCell")
         return tableView
     }()
