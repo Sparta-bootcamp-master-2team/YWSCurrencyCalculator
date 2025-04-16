@@ -6,7 +6,7 @@
 //
 import Foundation
 
-enum CurrencyCountryMapper {
+enum ExchangeRateMapper {
     static let countryMap: [String: String] = [
         "USD": "미국",
         "AED": "아랍에미리트",
