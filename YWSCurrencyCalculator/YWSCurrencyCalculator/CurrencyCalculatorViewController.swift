@@ -36,10 +36,19 @@ class CurrencyCalculatorViewController: UIViewController {
                     self?.exchangeRates = data.rates.sorted { $0.key < $1.key } // 정렬 후 표기
                     self?.currencyView.tableView.reloadData()
                 case .failure:
+                    self?.showErrorAlert()
                 }
             }
         }
     }
+    
+    // 에러 발생 시 알림
+    private func showErrorAlert() {
+        let alert = UIAlertController(title: "오류", message: "데이터를 불러올 수 없습니다.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default))
+        present(alert, animated: true)
+    }
+    
     
 }
 extension CurrencyCalculatorViewController: UITableViewDataSource, UITableViewDelegate {
