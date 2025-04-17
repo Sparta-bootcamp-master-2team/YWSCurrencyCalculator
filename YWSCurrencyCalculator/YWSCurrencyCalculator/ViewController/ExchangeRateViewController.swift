@@ -29,6 +29,7 @@ class ExchangeRateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        self.title = "환율 정보"
         
         setupTableView()
         fetchData()
@@ -37,6 +38,7 @@ class ExchangeRateViewController: UIViewController {
     /// 테이블뷰와 검색바에 대한 delegate/dataSource 설정을 수행합니다.
     private func setupTableView() {
         exchangeRateView.tableView.dataSource = self
+        exchangeRateView.tableView.delegate = self
         exchangeRateView.searchBar.delegate = self
     }
     
@@ -65,13 +67,19 @@ class ExchangeRateViewController: UIViewController {
         present(alert, animated: true)
     }
 }
-extension ExchangeRateViewController: UITableViewDataSource {
+extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate {
     
     /// 섹션 내 셀 개수를 반환합니다.
     /// 검색 결과가 없으면 1 (안내 셀), 결과가 있으면 해당 개수만큼 반환합니다.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredRates.isEmpty ? 1 : filteredRates.count
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let calculatorVC = CalculatorViewController()
+        navigationController?.pushViewController(calculatorVC, animated: true)
+    }
+
     
     /// 주어진 인덱스에 해당하는 셀을 반환합니다.
     /// 검색 결과가 없을 경우 "검색 결과 없음" 셀을 반환합니다.

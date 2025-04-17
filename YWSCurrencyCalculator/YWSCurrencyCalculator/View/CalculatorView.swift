@@ -21,15 +21,6 @@ class CalculatorView: UIView {
         return stack
     }()
     
-    private let titleLable: UILabel = {
-        let label = UILabel()
-        label.text = "환율 계산기"
-        label.textAlignment = .left
-        label.font = .systemFont(ofSize: 30, weight: .bold)
-        
-        return label
-    }()
-    
     private let currencyLable: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 24, weight: .bold)
@@ -67,6 +58,7 @@ class CalculatorView: UIView {
     private let convertButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .systemBlue
+        button.setTitle("환율 계산", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 8
@@ -92,20 +84,15 @@ class CalculatorView: UIView {
     
     private func setupUI() {
         /// 뷰 계층 구성 (addSubview)
-        addSubview(titleLable)
         addSubview(labelStackView)
         addSubview(amountTextField)
         addSubview(convertButton)
         addSubview(resultLabel)
         
         /// 오토레이아웃 설정 (SnapKit 등)
-        titleLable.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide).offset(16)
-            make.leading.trailing.equalTo(safeAreaLayoutGuide).inset(16)
-        }
         
         labelStackView.snp.makeConstraints { make in
-            make.top.equalTo(titleLable.snp.bottom).offset(32)
+            make.top.equalTo(safeAreaLayoutGuide).offset(16).offset(32)
             make.centerX.equalToSuperview()
         }
         

@@ -14,15 +14,6 @@ class ExchangeRateView: UIView {
     
     // MARK: - UI Components
     
-    private let titleLable: UILabel = {
-        let label = UILabel()
-        label.text = "환율 정보"
-        label.textAlignment = .left
-        label.font = .systemFont(ofSize: 30, weight: .bold)
-        
-        return label
-    }()
-    
     /// 통화 검색을 위한 검색바입니다.
     /// - placeholder: "통화 검색"
     /// - 배경 이미지를 제거하여 깔끔한 디자인 적용
@@ -62,17 +53,11 @@ class ExchangeRateView: UIView {
     
     /// UI 컴포넌트들을 뷰에 추가하고 SnapKit을 통해 오토레이아웃을 설정합니다.
     private func setUI() {
-        addSubview(titleLable)
         addSubview(searchBar)
         addSubview(tableView)
         
-        titleLable.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide).offset(16)
-            make.leading.trailing.equalTo(safeAreaLayoutGuide).inset(16)
-        }
-        
         searchBar.snp.makeConstraints { make in
-            make.top.equalTo(titleLable.snp.bottom)
+            make.top.equalTo(safeAreaLayoutGuide)
             make.leading.trailing.equalTo(safeAreaLayoutGuide)
         }
         
