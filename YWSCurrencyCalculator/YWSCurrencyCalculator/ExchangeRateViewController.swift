@@ -63,7 +63,7 @@ class ExchangeRateViewController: UIViewController {
         present(alert, animated: true)
     }
 }
-extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate {
+extension ExchangeRateViewController: UITableViewDataSource {
     
     /// 섹션 내 셀 개수를 반환합니다.
     /// 검색 결과가 없으면 1 (안내 셀), 결과가 있으면 해당 개수만큼 반환합니다.
