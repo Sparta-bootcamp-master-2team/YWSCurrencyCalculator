@@ -80,10 +80,7 @@ extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate
 
         let (code, rate) = filteredRates[indexPath.row]
 
-        let calculatorVC = CalculatorViewController()
-        calculatorVC.currencyCode = code
-        calculatorVC.rate = rate
-
+        let calculatorVC = CalculatorViewController(currencyCode: code, rate: rate)
         navigationController?.pushViewController(calculatorVC, animated: true)
     }
 
