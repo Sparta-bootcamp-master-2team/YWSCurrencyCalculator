@@ -12,6 +12,11 @@ class CalculatorView: UIView {
     // MARK: - UI Components
     // 뷰에 들어갈 컴포넌트들을 정의하는 공간
     
+    /// 입력 필드 값 접근용
+    var amountText: String? {
+        return amountTextField.text
+    }
+    
     private lazy var labelStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [currencyLabel, countryLabel])
         stack.axis = .vertical
@@ -125,7 +130,17 @@ class CalculatorView: UIView {
         countryLabel.text = ExchangeRateMapper.countryName(for: currency)
     }
     
+    func setConvertButtonTarget(_ target: Any?, action: Selector) {
+        convertButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+
+    /// 결과 텍스트 표시용
+    func updateResultLabel(text: String) {
+        resultLabel.text = text
+    }
+
     // MARK: - Private Methods
     // 내부 로직 처리용 메서드들
+    
     
 }
