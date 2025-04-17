@@ -68,7 +68,7 @@ class ExchangeRateView: UIView {
         
         titleLable.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide).offset(16)
-            make.leading.trailing.equalTo(safeAreaLayoutGuide).offset(16)
+            make.leading.trailing.equalTo(safeAreaLayoutGuide).inset(16)
         }
         
         searchBar.snp.makeConstraints { make in
