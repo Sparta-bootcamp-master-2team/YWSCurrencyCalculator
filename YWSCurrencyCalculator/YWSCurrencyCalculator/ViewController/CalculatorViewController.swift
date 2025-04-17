@@ -11,6 +11,9 @@ class CalculatorViewController: UIViewController {
     
     private let calculatorView = CalculatorView()
     
+    var currencyCode: String = ""
+    var rate: Double = 0.0
+    
     override func loadView() {
         self.view = calculatorView
     }
@@ -19,5 +22,7 @@ class CalculatorViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         self.title = "환율 계산기"
-    }
+        self.calculatorView.configure(currency: currencyCode, rate: rate)
+        
+    } 
 }

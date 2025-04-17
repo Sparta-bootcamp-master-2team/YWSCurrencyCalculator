@@ -76,7 +76,14 @@ extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard !filteredRates.isEmpty else { return }
+
+        let (code, rate) = filteredRates[indexPath.row]
+
         let calculatorVC = CalculatorViewController()
+        calculatorVC.currencyCode = code
+        calculatorVC.rate = rate
+
         navigationController?.pushViewController(calculatorVC, animated: true)
     }
 

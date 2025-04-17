@@ -13,7 +13,7 @@ class CalculatorView: UIView {
     // 뷰에 들어갈 컴포넌트들을 정의하는 공간
     
     private lazy var labelStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [currencyLable, countryLable])
+        let stack = UIStackView(arrangedSubviews: [currencyLabel, countryLabel])
         stack.axis = .vertical
         stack.spacing = 4
         stack.alignment = .center
@@ -21,14 +21,14 @@ class CalculatorView: UIView {
         return stack
     }()
     
-    private let currencyLable: UILabel = {
+    private let currencyLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 24, weight: .bold)
         
         return label
     }()
     
-    private let countryLable: UILabel = {
+    private let countryLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16)
         label.textColor = .gray
@@ -120,6 +120,10 @@ class CalculatorView: UIView {
     
     // MARK: - Public Methods
     // 외부에서 이 뷰에 접근하는 API 제공 (ex: updateLabel(with:))
+    func configure(currency: String, rate: Double) {
+        currencyLabel.text = currency
+        countryLabel.text = ExchangeRateMapper.countryName(for: currency)
+    }
     
     // MARK: - Private Methods
     // 내부 로직 처리용 메서드들
