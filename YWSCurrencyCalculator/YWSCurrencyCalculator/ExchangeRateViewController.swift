@@ -34,7 +34,6 @@ class ExchangeRateViewController: UIViewController {
     /// 테이블뷰와 검색바에 대한 delegate/dataSource 설정을 수행합니다.
     private func setupTableView() {
         exchangeRateView.tableView.dataSource = self
-        exchangeRateView.tableView.delegate = self
         exchangeRateView.searchBar.delegate = self
     }
     
@@ -111,6 +110,11 @@ extension ExchangeRateViewController: UISearchBarDelegate {
                    country.lowercased().contains(searchText.lowercased())
         }
         exchangeRateView.tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // 키보드 내리기
+        searchBar.resignFirstResponder()
     }
 }
 
