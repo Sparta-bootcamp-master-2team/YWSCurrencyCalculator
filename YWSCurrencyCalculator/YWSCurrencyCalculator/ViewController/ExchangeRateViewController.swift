@@ -21,10 +21,13 @@ class ExchangeRateViewController: UIViewController {
     /// 필터링된 환율 데이터 (검색 결과에 따라 갱신)
     private var filteredRates: [(String, Double)] = []
     
+    override func loadView() {
+        self.view = exchangeRateView
+    }
+    
     /// 뷰가 로드된 후 초기 UI 설정 및 API 호출을 수행합니다.
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view = exchangeRateView
         self.view.backgroundColor = .white
         
         setupTableView()
