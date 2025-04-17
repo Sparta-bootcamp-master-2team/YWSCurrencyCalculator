@@ -21,11 +21,15 @@ class ExchangeRateViewController: UIViewController {
     /// 필터링된 환율 데이터 (검색 결과에 따라 갱신)
     private var filteredRates: [(String, Double)] = []
     
+    override func loadView() {
+        self.view = exchangeRateView
+    }
+    
     /// 뷰가 로드된 후 초기 UI 설정 및 API 호출을 수행합니다.
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view = exchangeRateView
         self.view.backgroundColor = .white
+        self.title = "환율 정보"
         
         setupTableView()
         fetchData()
@@ -71,6 +75,16 @@ extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate
         return filteredRates.isEmpty ? 1 : filteredRates.count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard !filteredRates.isEmpty else { return }
+
+        let (code, rate) = filteredRates[indexPath.row]
+
+        let calculatorVC = CalculatorViewController(currencyCode: code, rate: rate)
+        navigationController?.pushViewController(calculatorVC, animated: true)
+    }
+
+    
     /// 주어진 인덱스에 해당하는 셀을 반환합니다.
     /// 검색 결과가 없을 경우 "검색 결과 없음" 셀을 반환합니다.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,6 +125,11 @@ extension ExchangeRateViewController: UISearchBarDelegate {
                    country.lowercased().contains(searchText.lowercased())
         }
         exchangeRateView.tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // 키보드 내리기
+        searchBar.resignFirstResponder()
     }
 }
 
