@@ -9,7 +9,7 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
     
-    private let calculatorView = CalculatorView()
+    let calculatorView = CalculatorView()
     
     var currencyCode: String = ""
     var rate: Double = 0.0

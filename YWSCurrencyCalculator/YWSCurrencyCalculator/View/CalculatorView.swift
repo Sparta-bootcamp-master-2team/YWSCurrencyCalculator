@@ -41,7 +41,7 @@ class CalculatorView: UIView {
         return label
     }()
     
-    private let resultLabel: UILabel = {
+    let resultLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .medium)
         label.textAlignment = .center
@@ -50,7 +50,7 @@ class CalculatorView: UIView {
         return label
     }()
     
-    private let amountTextField: UITextField = {
+    let amountTextField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
         textField.keyboardType = .decimalPad
