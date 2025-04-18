@@ -9,7 +9,7 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
     
-    private let calculatorView = CalculatorView()
+    let calculatorView = CalculatorView()
     
     var currencyCode: String = ""
     var rate: Double = 0.0
@@ -34,5 +34,34 @@ class CalculatorViewController: UIViewController {
         self.title = "환율 계산기"
         self.calculatorView.configure(currency: currencyCode, rate: rate)
         
+        calculatorView.setConvertButtonTarget(self, action: #selector(handleConvert))
     }
+    
+    @objc private func handleConvert() {
+        guard let text = calculatorView.amountText, !text.isEmpty else {
+            showAlert(message: "금액을 입력해주세요")
+            return
+        }
+
+        guard let amount = Double(text) else {
+            showAlert(message: "올바른 숫자를 입력해주세요")
+            return
+        }
+        
+        let result = amount * rate
+        let formattedAmount = String(format: "%.2f", amount)
+        let formattedResult = String(format: "%.2f", result)
+        calculatorView.updateResultLabel(
+            text: "$ \(formattedAmount) → \(formattedResult) \(currencyCode)"
+        )
+        
+    }
+
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "입력 오류", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default))
+        present(alert, animated: true)
+    }
+
+    
 }
