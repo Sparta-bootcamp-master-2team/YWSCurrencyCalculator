@@ -20,6 +20,7 @@ final class ExchangeRateViewModel: ViewModelProtocol {
     }
 
     var state: ((State) -> Void)?
+    private(set) var currentState: State = .init()
 
     private var allRates: [(String, Double)] = []
     private let service = DataService()
@@ -27,31 +28,34 @@ final class ExchangeRateViewModel: ViewModelProtocol {
     func send(action: Action) {
         switch action {
         case .fetch:
-            state?(State(isLoading: true, filteredRates: []))
+            currentState.isLoading = true
+            state?(currentState)
             service.fetchData { [weak self] result in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let data):
                         let sorted = data.rates.sorted { $0.key < $1.key }
                         self?.allRates = sorted
-                        self?.state?(State(isLoading: false, filteredRates: sorted))
+                        self?.currentState = State(isLoading: false, filteredRates: sorted)
+                        self?.state?(self!.currentState)
                     case .failure:
-                        self?.state?(State(isLoading: false, filteredRates: [], errorMessage: "데이터를 불러올 수 없습니다."))
+                        self?.currentState = State(isLoading: false, filteredRates: [], errorMessage: "데이터를 불러올 수 없습니다.")
+                        self?.state?(self!.currentState)
                     }
                 }
             }
         case .search(let query):
             if query.isEmpty {
-                state?(State(isLoading: false, filteredRates: allRates))
-                return
+                currentState.filteredRates = allRates
+            } else {
+                let filtered = allRates.filter { (code, _) in
+                    let country = ExchangeRateMapper.countryName(for: code)
+                    return code.lowercased().contains(query.lowercased()) ||
+                           country.lowercased().contains(query.lowercased())
+                }
+                currentState.filteredRates = filtered
             }
-
-            let filtered = allRates.filter { (code, _) in
-                let country = ExchangeRateMapper.countryName(for: code)
-                return code.lowercased().contains(query.lowercased()) ||
-                       country.lowercased().contains(query.lowercased())
-            }
-            state?(State(isLoading: false, filteredRates: filtered))
+            state?(currentState)
         }
     }
 }
