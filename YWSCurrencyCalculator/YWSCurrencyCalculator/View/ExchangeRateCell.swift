@@ -8,9 +8,16 @@
 import UIKit
 import SnapKit
 
+protocol ExchangeRateCellDelegate: AnyObject {
+    func ExchangeRateCellDidTapFavorite()
+}
+
 /// 환율 정보를 보여주는 커스텀 셀입니다.
 /// 통화 코드, 국가명, 환율 값을 수직/수평으로 정렬하여 표시합니다.
 class ExchangeRateCell: UITableViewCell {
+    
+    private var isFavorite: Bool = false
+    weak var delegate: ExchangeRateCellDelegate?
     
     // MARK: - UI Components
     
@@ -59,6 +66,7 @@ class ExchangeRateCell: UITableViewCell {
     /// 셀 초기화 메서드입니다. SnapKit을 활용해 오토레이아웃을 설정합니다.
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupActions()
         selectionStyle = .none
         
         contentView.addSubview(labelStackView)
@@ -97,5 +105,34 @@ class ExchangeRateCell: UITableViewCell {
         currencyLabel.text = currency
         countryLabel.text = ExchangeRateMapper.countryName(for: currency)
         rateLabel.text = String(format: "%.4f", rate)
+
+        isFavorite = CoreDataManager.shared.isFavorite(code: currency)
+        updateFavoriteImage()
     }
+    
+    private func setupActions() {
+        favoriteButton.addTarget(self, action: #selector(didTapFavorite), for: .touchUpInside)
+    }
+
+
+    private func updateFavoriteImage() {
+        let imageName = isFavorite ? "star.fill" : "star"
+        favoriteButton.setImage(UIImage(systemName: imageName)?.withRenderingMode(.alwaysTemplate), for: .normal)
+        favoriteButton.tintColor = .systemYellow
+    }
+
+    @objc private func didTapFavorite() {
+        guard let code = currencyLabel.text else { return }
+        isFavorite.toggle()
+        updateFavoriteImage()
+
+        if isFavorite {
+            CoreDataManager.shared.saveFavorite(code: code)
+        } else {
+            CoreDataManager.shared.removeFavorite(code: code)
+        }
+
+        delegate?.ExchangeRateCellDidTapFavorite()
+    }
+
 }
