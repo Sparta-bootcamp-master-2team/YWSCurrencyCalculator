@@ -47,6 +47,13 @@ class ExchangeRateCell: UITableViewCell {
         return label
     }()
     
+    private let favoriteButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "star"), for: .normal)
+        button.tintColor = .systemYellow
+        return button
+    }()
+    
     // MARK: - Initializers
     
     /// 셀 초기화 메서드입니다. SnapKit을 활용해 오토레이아웃을 설정합니다.
@@ -56,6 +63,7 @@ class ExchangeRateCell: UITableViewCell {
         
         contentView.addSubview(labelStackView)
         contentView.addSubview(rateLabel)
+        contentView.addSubview(favoriteButton)
         
         labelStackView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
@@ -63,10 +71,14 @@ class ExchangeRateCell: UITableViewCell {
         }
         
         rateLabel.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(16)
             make.centerY.equalToSuperview()
             make.leading.equalTo(labelStackView.snp.trailing).offset(16)
-            make.width.equalTo(120)
+        }
+        
+        favoriteButton.snp.makeConstraints { make in
+            make.leading.equalTo(rateLabel.snp.trailing).offset(16)
+            make.trailing.equalToSuperview().inset(16)
+            make.centerY.equalToSuperview()
         }
     }
     
