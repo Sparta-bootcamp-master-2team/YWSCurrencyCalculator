@@ -74,6 +74,7 @@ extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate
 
         let (currency, rate) = filtered[indexPath.row]
         cell.configure(currency: currency, rate: rate)
+        cell.delegate = self
         return cell
     }
 
@@ -86,4 +87,10 @@ extension ExchangeRateViewController: UITableViewDataSource, UITableViewDelegate
         navigationController?.pushViewController(calculatorVC, animated: true)
     }
 }
+extension ExchangeRateViewController: ExchangeRateCellDelegate {
+    func ExchangeRateCellDidTapFavorite() {
+        viewModel.send(action: .fetch)
+    }
+}
+
 
