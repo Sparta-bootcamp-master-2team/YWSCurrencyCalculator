@@ -18,7 +18,15 @@ class CalculatorViewController: UIViewController {
     override func loadView() {
         self.view = calculatorView
     }
+
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        CoreDataManager.shared.saveAppState(screen: "calculator", code: currencyCode)
+    }
     
+
+
     init(currencyCode: String, rate: Double) {
         super.init(nibName: nil, bundle: nil)
         self.viewModel = CalculatorViewModel(currencyCode: currencyCode, rate: rate)
