@@ -18,7 +18,7 @@ final class ExchangeRateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "환율 정보"
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "BackgroundColor") ?? .systemBackground
 
         exchangeRateView.searchBar.delegate = self
         exchangeRateView.tableView.dataSource = self

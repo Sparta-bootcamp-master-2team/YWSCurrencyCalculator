@@ -21,6 +21,8 @@ class ExchangeRateView: UIView {
         let searchBar = UISearchBar()
         searchBar.placeholder = "통화 검색"
         searchBar.backgroundImage = UIImage() // 상단 라인 제거
+        searchBar.searchTextField.backgroundColor = UIColor(named: "CellBackgroundColor") ?? .secondarySystemBackground
+        searchBar.searchTextField.textColor = UIColor(named: "TextColor") ?? .label
         return searchBar
     }()
     
@@ -33,6 +35,7 @@ class ExchangeRateView: UIView {
         tableView.separatorStyle = .singleLine
         tableView.rowHeight = 60
         tableView.register(ExchangeRateCell.self, forCellReuseIdentifier: "ExchangeRateCell")
+        tableView.backgroundColor = UIColor(named: "BackgroundColor") ?? .systemBackground
         return tableView
     }()
     
@@ -41,6 +44,7 @@ class ExchangeRateView: UIView {
     /// 코드 기반 초기화 메서드입니다. UI 구성 메서드를 호출합니다.
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = UIColor(named: "BackgroundColor") ?? .systemBackground
         setUI()
     }
     

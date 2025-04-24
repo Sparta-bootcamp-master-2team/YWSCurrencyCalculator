@@ -29,6 +29,7 @@ class CalculatorView: UIView {
     private let currencyLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 24, weight: .bold)
+        label.textColor = UIColor(named: "TextColor") ?? .label
         
         return label
     }()
@@ -37,6 +38,7 @@ class CalculatorView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16)
         label.textColor = .gray
+        label.textColor = UIColor(named: "SecondaryTextColor") ?? .secondaryLabel
         
         return label
     }()
@@ -44,6 +46,7 @@ class CalculatorView: UIView {
     let resultLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .medium)
+        label.textColor = UIColor(named: "TextColor") ?? .label
         label.textAlignment = .center
         label.numberOfLines = 0
         
@@ -56,12 +59,14 @@ class CalculatorView: UIView {
         textField.keyboardType = .decimalPad
         textField.textAlignment = .center
         textField.placeholder = "금액을 입력하세요"
+        textField.textColor = UIColor(named: "TextColor") ?? .label
         
         return textField
     }()
     
     private let convertButton: UIButton = {
         let button = UIButton()
+        button.backgroundColor = UIColor(named: "ButtonColor") ?? .systemBlue
         button.backgroundColor = .systemBlue
         button.setTitle("환율 계산", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -77,6 +82,7 @@ class CalculatorView: UIView {
     // init(frame:) 또는 required init?(coder:) 구현
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = UIColor(named: "BackgroundColor") ?? .systemBackground
         setupUI()
     }
     
