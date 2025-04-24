@@ -17,12 +17,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         let window = UIWindow(windowScene: windowScene)
+
+        // 항상 root는 리스트
         let rootVC = ExchangeRateViewController()
         let navController = UINavigationController(rootViewController: rootVC)
         window.rootViewController = navController
         self.window = window
         window.makeKeyAndVisible()
+
+        // 복원된 상태에 따라 Calculator를 push
+        DispatchQueue.main.async {
+            if let state = CoreDataManager.shared.getAppState(),
+               state.screen == "calculator",
+               let code = state.code,
+               let rate = CoreDataManager.shared.getCachedRate(for: code) {
+                let calculatorVC = CalculatorViewController(currencyCode: code, rate: rate)
+                navController.pushViewController(calculatorVC, animated: false)
+            }
+        }
     }
+
 
 
 
@@ -49,9 +63,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        // Called as the scene transitions from the foreground to the background.
-        // Use this method to save data, release shared resources, and store enough scene-specific state information
-        // to restore the scene back to its current state.
+        // 현재 화면이 CalculatorViewController라면 상태 저장
+        if let nav = window?.rootViewController as? UINavigationController,
+           let calculator = nav.topViewController as? CalculatorViewController {
+            CoreDataManager.shared.saveAppState(screen: "calculator", code: calculator.currencyCode)
+            print("[DEBUG] background 저장 - calculator")
+        } else {
+            CoreDataManager.shared.saveAppState(screen: "list", code: nil)
+            print("[DEBUG] background 저장 - list")
+        }
     }
 
 

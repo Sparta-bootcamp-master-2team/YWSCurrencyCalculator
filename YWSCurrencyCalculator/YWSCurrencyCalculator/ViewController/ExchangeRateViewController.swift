@@ -10,37 +10,10 @@ import UIKit
 final class ExchangeRateViewController: UIViewController {
     private let exchangeRateView = ExchangeRateView()
     private let viewModel = ExchangeRateViewModel()
-    
-    private var hasPushedSavedScreen = false
 
     override func loadView() {
         view = exchangeRateView
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        // 딱 한 번만 push
-        guard !hasPushedSavedScreen else { return }
-        hasPushedSavedScreen = true
-        
-        if let state = CoreDataManager.shared.getAppState(),
-           state.screen == "calculator",
-           let code = state.code,
-           let rate = CoreDataManager.shared.getCachedRate(for: code) {
-            
-            let vc = CalculatorViewController(currencyCode: code, rate: rate)
-            navigationController?.pushViewController(vc, animated: false)
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // 뒤로 돌아왔을 때 상태를 "list"로 업데이트
-        CoreDataManager.shared.saveAppState(screen: "list", code: nil)
-    }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
