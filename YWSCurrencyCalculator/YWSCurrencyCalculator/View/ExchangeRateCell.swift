@@ -61,6 +61,14 @@ class ExchangeRateCell: UITableViewCell {
         return button
     }()
     
+    private let changeDirectionImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        
+        imageView.snp.makeConstraints { $0.width.equalTo(20) } // 아이콘 없을 때도 여백 유지
+        return imageView
+    }()
+    
     // MARK: - Initializers
     
     /// 셀 초기화 메서드입니다. SnapKit을 활용해 오토레이아웃을 설정합니다.
@@ -71,6 +79,7 @@ class ExchangeRateCell: UITableViewCell {
         
         contentView.addSubview(labelStackView)
         contentView.addSubview(rateLabel)
+        contentView.addSubview(changeDirectionImage)
         contentView.addSubview(favoriteButton)
         
         labelStackView.snp.makeConstraints { make in
@@ -83,11 +92,21 @@ class ExchangeRateCell: UITableViewCell {
             make.leading.equalTo(labelStackView.snp.trailing).offset(16)
         }
         
-        favoriteButton.snp.makeConstraints { make in
+        contentView.addSubview(changeDirectionImage)
+
+        changeDirectionImage.snp.makeConstraints { make in
             make.leading.equalTo(rateLabel.snp.trailing).offset(16)
-            make.trailing.equalToSuperview().inset(16)
             make.centerY.equalToSuperview()
+            make.trailing.equalTo(favoriteButton.snp.leading).offset(-16)
+
         }
+        favoriteButton.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().inset(16)
+        }
+
+        
+        
     }
     
     /// 스토리보드 초기화 지원용 (사용하지 않음)
@@ -108,7 +127,21 @@ class ExchangeRateCell: UITableViewCell {
 
         isFavorite = CoreDataManager.shared.isFavorite(code: currency)
         updateFavoriteImage()
+
+        let direction = RateChangeHelper.direction(for: currency, newRate: rate)
+        switch direction {
+        case .up:
+            changeDirectionImage.image = UIImage(systemName: "arrow.up")?.withRenderingMode(.alwaysTemplate)
+            changeDirectionImage.tintColor = .systemGreen
+        case .down:
+            changeDirectionImage.image = UIImage(systemName: "arrow.down")?.withRenderingMode(.alwaysTemplate)
+            changeDirectionImage.tintColor = .systemRed
+        case .same:
+            changeDirectionImage.image = UIImage(systemName: "minus")?.withRenderingMode(.alwaysTemplate)
+            changeDirectionImage.tintColor = .lightGray
+        }
     }
+
     
     private func setupActions() {
         favoriteButton.addTarget(self, action: #selector(didTapFavorite), for: .touchUpInside)
