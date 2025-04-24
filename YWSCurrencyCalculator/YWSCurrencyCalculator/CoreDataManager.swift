@@ -80,4 +80,30 @@ final class CoreDataManager {
         request.predicate = NSPredicate(format: "code == %@", code)
         return (try? context.fetch(request))?.first
     }
+    
+    // 저장
+    func saveAppState(screen: String, code: String?) {
+        // 항상 하나만 유지되도록 삭제 후 삽입 방식
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "AppState")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
+        _ = try? context.execute(deleteRequest)
+
+        let state = AppState(context: context)
+        state.lastScreen = screen
+        state.lastCurrencyCode = code
+        try? context.save()
+    }
+
+    // 조회
+    func getAppState() -> (screen: String, code: String?)? {
+        let request: NSFetchRequest<AppState> = AppState.fetchRequest()
+        guard let result = try? context.fetch(request),
+              let state = result.first,
+              let screen = state.lastScreen else {
+            return nil
+        }
+        return (screen: screen, code: state.lastCurrencyCode)
+    }
+
+
 }
