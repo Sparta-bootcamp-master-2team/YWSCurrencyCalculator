@@ -33,7 +33,7 @@ class ExchangeRateCell: UITableViewCell {
     private let currencyLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .medium)
-        label.textColor = .label
+        label.textColor = UIColor(named: "TextColor") ?? .label
         return label
     }()
     
@@ -41,7 +41,7 @@ class ExchangeRateCell: UITableViewCell {
     private let countryLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
-        label.textColor = .gray
+        label.textColor = UIColor(named: "SecondaryTextColor") ?? .secondaryLabel
         return label
     }()
     
@@ -50,14 +50,14 @@ class ExchangeRateCell: UITableViewCell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16)
         label.textAlignment = .right
-        label.textColor = .label
+        label.textColor = UIColor(named: "TextColor") ?? .label
         return label
     }()
     
     private let favoriteButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "star"), for: .normal)
-        button.tintColor = .systemYellow
+        button.tintColor = UIColor(named: "FavoriteColor") ?? .systemYellow
         return button
     }()
     
@@ -74,6 +74,8 @@ class ExchangeRateCell: UITableViewCell {
     /// 셀 초기화 메서드입니다. SnapKit을 활용해 오토레이아웃을 설정합니다.
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        contentView.backgroundColor = UIColor(named: "CellBackgroundColor") ?? .systemBackground
+        
         setupActions()
         selectionStyle = .none
         
@@ -151,7 +153,7 @@ class ExchangeRateCell: UITableViewCell {
     private func updateFavoriteImage() {
         let imageName = isFavorite ? "star.fill" : "star"
         favoriteButton.setImage(UIImage(systemName: imageName)?.withRenderingMode(.alwaysTemplate), for: .normal)
-        favoriteButton.tintColor = .systemYellow
+        favoriteButton.tintColor = UIColor(named: "FavoriteColor") ?? .systemYellow
     }
 
     @objc private func didTapFavorite() {
