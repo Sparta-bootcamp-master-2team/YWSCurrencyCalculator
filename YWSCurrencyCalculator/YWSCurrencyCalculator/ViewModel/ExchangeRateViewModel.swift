@@ -49,10 +49,39 @@ final class ExchangeRateViewModel: ViewModelProtocol {
                     switch result {
                     case .success(let data):
                         self.favorites = Set(CoreDataManager.shared.getAllFavorites())
-                        let sorted = self.sortRates(data.rates)
+
+                        var manipulatedRates = data.rates
+
+                        #if DEBUG
+                        manipulatedRates["AED"] = 3.70
+                        manipulatedRates["AFN"] = 72.5
+                        manipulatedRates["ALL"] = 84.9
+                        manipulatedRates["AMD"] = 391.8
+                        manipulatedRates["ANG"] = 1.77
+                        manipulatedRates["AOA"] = 925.0
+                        manipulatedRates["ARS"] = 1100.0
+                        manipulatedRates["AUD"] = 1.54
+                        manipulatedRates["AWG"] = 1.80
+                        #endif
+
+                        let updatedRates = manipulatedRates.map { code, newRate -> (String, Double) in
+                            #if DEBUG
+                            if code == "USD" {
+                                print("[MOCK] \(code) 적용 중: \(newRate)")
+                            }
+                            #endif
+
+                            let _ = RateChangeHelper.direction(for: code, newRate: newRate)
+                            CoreDataManager.shared.updateOrInsertRate(code: code, newRate: newRate)
+                            return (code, newRate)
+                        }
+
+                        let sorted = self.sortRates(Dictionary(uniqueKeysWithValues: updatedRates))
                         self.allRates = sorted
                         self.currentState = State(isLoading: false, filteredRates: sorted)
                         self.state?(self.currentState)
+
+
                     case .failure:
                         self.currentState = State(isLoading: false, filteredRates: [], errorMessage: "데이터를 불러올 수 없습니다.")
                         self.state?(self.currentState)
