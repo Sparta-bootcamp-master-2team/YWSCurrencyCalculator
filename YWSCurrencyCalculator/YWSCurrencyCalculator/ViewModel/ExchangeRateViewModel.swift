@@ -53,24 +53,18 @@ final class ExchangeRateViewModel: ViewModelProtocol {
                         var manipulatedRates = data.rates
 
                         #if DEBUG
-                        manipulatedRates["AED"] = 3.70
-                        manipulatedRates["AFN"] = 72.5
-                        manipulatedRates["ALL"] = 84.9
+                        manipulatedRates["AED"] = 5.70
+                        manipulatedRates["AFN"] = 42.5
+                        manipulatedRates["ALL"] = 74.9
                         manipulatedRates["AMD"] = 391.8
                         manipulatedRates["ANG"] = 1.77
-                        manipulatedRates["AOA"] = 925.0
-                        manipulatedRates["ARS"] = 1100.0
+                        manipulatedRates["AOA"] = 725.0
+                        manipulatedRates["ARS"] = 2200.0
                         manipulatedRates["AUD"] = 1.54
-                        manipulatedRates["AWG"] = 1.80
+                        manipulatedRates["AWG"] = 3.80
                         #endif
 
                         let updatedRates = manipulatedRates.map { code, newRate -> (String, Double) in
-                            #if DEBUG
-                            if code == "USD" {
-                                print("[MOCK] \(code) 적용 중: \(newRate)")
-                            }
-                            #endif
-
                             let _ = RateChangeHelper.direction(for: code, newRate: newRate)
                             CoreDataManager.shared.updateOrInsertRate(code: code, newRate: newRate)
                             return (code, newRate)

@@ -13,6 +13,7 @@ public class CachedRate: NSManagedObject {
     @NSManaged public var code: String
     @NSManaged public var rate: Double
     @NSManaged public var previousRate: NSNumber?
+    @NSManaged public var isFavorite: Bool
 }
 
 extension CachedRate {

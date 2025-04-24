@@ -25,31 +25,34 @@ final class CoreDataManager {
     var context: NSManagedObjectContext { container.viewContext }
     
     func saveFavorite(code: String) {
-        let favorite = CachedRate(context: context)
-        favorite.code = code
+        if let rate = getCachedRateObject(for: code) {
+            rate.isFavorite = true
+        } else {
+            let new = CachedRate(context: context)
+            new.code = code
+            new.isFavorite = true
+        }
         try? context.save()
     }
-    
+
     func removeFavorite(code: String) {
-        let request = CachedRate.fetchRequest()
-        request.predicate = NSPredicate(format: "code == %@", code)
-        if let result = try? context.fetch(request), let first = result.first {
-            context.delete(first)
+        if let rate = getCachedRateObject(for: code) {
+            rate.isFavorite = false
             try? context.save()
         }
     }
-    
+
+    func isFavorite(code: String) -> Bool {
+        return getCachedRateObject(for: code)?.isFavorite ?? false
+    }
+
     func getAllFavorites() -> [String] {
         let request = CachedRate.fetchRequest()
+        request.predicate = NSPredicate(format: "isFavorite == %@", NSNumber(value: true))
         let result = try? context.fetch(request)
         return result?.compactMap { $0.code } ?? []
     }
-    
-    func isFavorite(code: String) -> Bool {
-        let request = CachedRate.fetchRequest()
-        request.predicate = NSPredicate(format: "code == %@", code)
-        return (try? context.count(for: request)) ?? 0 > 0
-    }
+
     
     func getCachedRate(for code: String) -> Double? {
         let request = CachedRate.fetchRequest()
